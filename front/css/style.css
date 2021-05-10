@@ -1513,6 +1513,8 @@ label {
 }
 .testi-avatar img {
 	display: inline-block;
+	width: 300px;
+	border-radius: 50%;
 }
 .testi-content h4 {
 	text-transform: uppercase;
@@ -1669,7 +1671,6 @@ label {
 	background: #19273e;
 	padding: 20px 30px;
 	margin-bottom: 30px;
-	text-transform: capitalize;
 	color: #8b98af;
 	font-size: 14px;
 }

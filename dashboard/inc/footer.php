@@ -1,6 +1,7 @@
 
     <script src="../assets/lib/jquery/jquery.js"></script>
     <script src="../assets/lib/popper.js/popper.js"></script>
+    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="../assets/lib/bootstrap/bootstrap.js"></script>
     <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="../assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
@@ -30,7 +31,7 @@
                 swal("Your imaginary file is safe!");
               }
             });
-        })
+        });
         $('.socialDelete').click(function(){
             var id = $(this).attr("data-id");
             swal({
@@ -51,7 +52,10 @@
                 swal("Your imaginary file is safe!");
               }
             });
-        })
+        });
+
+      CKEDITOR.replace( 'about' );
+      CKEDITOR.replace( 'summary' );
 	  </script>
   </body>
 </html>

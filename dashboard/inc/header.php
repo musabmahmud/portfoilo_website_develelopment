@@ -44,6 +44,8 @@
     <!-- vendor css -->
     <link href="../assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../front/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../front/css/flaticon.css">
     <link href="../assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet">
 
@@ -88,6 +90,48 @@
             <span class="menu-item-label">Users</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
+        <a href="settings.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-wrench tx-20"></i>
+            <span class="menu-item-label">System Settings</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="educations.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-graduation-cap tx-20"></i>
+            <span class="menu-item-label">Educations</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="portfolio.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-desktop tx-20"></i>
+            <span class="menu-item-label">Portfolio</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="testimonials.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-quote-left tx-20"></i>
+            <span class="menu-item-label">Testimonials</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="messages.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-envelope tx-20"></i>
+            <span class="menu-item-label">Messages</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="customer-count.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-user tx-20"></i>
+            <span class="menu-item-label">Customer Count</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="banner.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon fa fa-image tx-20"></i>
+            <span class="menu-item-label">Banner</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
         <a href="socials.php" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon fa fa-share-alt tx-20"></i>
@@ -96,7 +140,7 @@
         </a><!-- sl-menu-link -->
         <a href="service.php" class="sl-menu-link">
           <div class="sl-menu-item">
-            <i class="menu-item-icon fa fa-store tx-20"></i>
+            <i class="menu-item-icon fa fa-spinner tx-20"></i>
             <span class="menu-item-label">Services</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
@@ -233,7 +277,11 @@
       </div><!-- sl-header-right -->
     </div><!-- sl-header -->
     <!-- ########## END: HEAD PANEL ########## -->
-
+      <?php 
+        $select_msg = "SELECT COUNT(*) as totalmsg, id, name, email,summary,status FROM messages WHERE status = 1 ORDER BY id DESC";
+        $query_msg = mysqli_query($db,$select_msg);
+        $assoc_msg = mysqli_fetch_assoc($query_msg);
+      ?>
     <!-- ########## START: RIGHT PANEL ########## -->
     <div class="sl-sideright">
       <ul class="nav nav-tabs nav-fill sidebar-tabs" role="tablist">
@@ -249,59 +297,29 @@
       <div class="tab-content">
         <div class="tab-pane pos-absolute a-0 mg-t-60 active" id="messages" role="tabpanel">
           <div class="media-list">
+            <?php 
+              if($assoc_msg['totalmsg'] > 0):
+            ?>
+            <div class="media-body">
+              <span>No Message</span>
+            </div>
+            <?php endif ?>
             <!-- loop starts here -->
+            <?php
+              foreach ($query_msg as $value_msg):
+            ?>
             <a href="" class="media-list-link">
               <div class="media">
-                <img src="../img/img3.jpg" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Donna Seay</p>
-                  <span class="d-block tx-11 tx-gray-500">2 minutes ago</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
+                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13"><?= $value_msg['name'];?></p>
+                  <span class="d-block tx-11 tx-gray-500"><?= $value_msg['summary'];?></span>
                 </div>
               </div><!-- media -->
             </a>
             <!-- loop ends here -->
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="../img/img4.jpg" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Samantha Francis</p>
-                  <span class="d-block tx-11 tx-gray-500">3 hours ago</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">My entire soul, like these sweet mornings of spring.</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="../img/img7.jpg" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Robert Walker</p>
-                  <span class="d-block tx-11 tx-gray-500">5 hours ago</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">I should be incapable of drawing a single stroke at the present moment...</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="../img/img5.jpg" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Larry Smith</p>
-                  <span class="d-block tx-11 tx-gray-500">Yesterday, 8:34pm</span>
-
-                  <p class="tx-13 mg-t-10 mg-b-0">When, while the lovely valley teems with vapour around me, and the meridian sun strikes...</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="../img/img3.jpg" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Donna Seay</p>
-                  <span class="d-block tx-11 tx-gray-500">Jan 23, 2:32am</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
-                </div>
-              </div><!-- media -->
-            </a>
+            <?php
+              endforeach
+            ?>
           </div><!-- media-list -->
           <div class="pd-15">
             <a href="" class="btn btn-secondary btn-block bd-0 rounded-0 tx-10 tx-uppercase tx-mont tx-medium tx-spacing-2">View More Messages</a>
